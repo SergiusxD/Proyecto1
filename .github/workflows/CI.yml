@@ -10,3 +10,6 @@ jobs:
         run: ls
       - name: Mostrar
         run: cat settings.gradle
+      - name: Mostrar2
+        run: cat settings.gradle2
+
