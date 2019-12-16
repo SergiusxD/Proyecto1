@@ -5,6 +5,6 @@ jobs:
     name: Prueba de Comando
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkoutEv1
+      - uses: actions/checkout@v1
       - name: Listado
         run: ls
