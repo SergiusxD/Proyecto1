@@ -1,1 +1,668 @@
-theme: jekyll-theme-merlot
+swagger: '2.0'
+info:
+  description: SOFTWARE DE ALMACENES
+  version: "1.0.0"
+  title: EMAVIAS
+  termsOfService: PAY TO USE
+  contact:
+    name: BITS'NFINGERS
+    url: 'http://bitsnfinger.com'
+    email: bits'nfinger@gmai.com
+  license:
+    name: API license
+    url: 'http://api.com'
+# host: 'localhost:9000'
+# basePath: /
+tags:
+  - name: inventario-controller
+    description: Operaciones pertenecientes al Inventario
+  - name: personal-controller
+    description: Operaciones pertenecientes al Personal
+  - name: responsable-controller
+    description: Operaciones pertenecientes al Responsable del almacen
+  - name: responsable-inven-controller
+    description: Operaciones pertenecientes al Responsable de inventario
+  - name: tecnico-controller
+    description: Operaciones pertenecientes al Tecnico
+paths:
+  /inventario:
+    post:
+      tags:
+        - inventario-controller
+      summary: saveInventario
+      operationId: saveInventarioUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: invToSave
+          description: invToSave
+          required: true
+          schema:
+            $ref: '#/definitions/Inventario'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Inventario'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/inventario/{id}':
+    get:
+      tags:
+        - inventario-controller
+      summary: Gets the product with specific id
+      operationId: getInventarioUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Inventario'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - inventario-controller
+      summary: updateInventario
+      operationId: updateInventarioUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+        - in: body
+          name: inventarioToUpdate
+          description: inventarioToUpdate
+          required: true
+          schema:
+            $ref: '#/definitions/Inventario'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Inventario'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - inventario-controller
+      summary: deleteInventario
+      operationId: deleteInventarioUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /personal:
+    post:
+      tags:
+        - personal-controller
+      summary: savePersonal
+      operationId: savePersonalUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: personalToSave
+          description: personalToSave
+          required: true
+          schema:
+            $ref: '#/definitions/Personal'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Personal'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/personal/{id}':
+    get:
+      tags:
+        - personal-controller
+      summary: Gets the product with specific id
+      operationId: getPersonalUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Personal'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - personal-controller
+      summary: updatePersonal
+      operationId: updatePersonalUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+        - in: body
+          name: personalToUpdate
+          description: personalToUpdate
+          required: true
+          schema:
+            $ref: '#/definitions/Personal'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Personal'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - personal-controller
+      summary: deletePersonal
+      operationId: deletePersonalUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /responsabledealmacen:
+    post:
+      tags:
+        - responsable-controller
+      summary: saveRespon
+      operationId: saveResponUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: responToSave
+          description: responToSave
+          required: true
+          schema:
+            $ref: '#/definitions/Responsable'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Responsable'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/responsabledealmacen/{id}':
+    get:
+      tags:
+        - responsable-controller
+      summary: Gets the product with specific id
+      operationId: getResponsableUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Responsable'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - responsable-controller
+      summary: updateResponsable
+      operationId: updateResponsableUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+        - in: body
+          name: responsableToUpdate
+          description: responsableToUpdate
+          required: true
+          schema:
+            $ref: '#/definitions/Responsable'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Responsable'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - responsable-controller
+      summary: deleteResponsable
+      operationId: deleteResponsableUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /responsabledeinven:
+    post:
+      tags:
+        - responsable-inven-controller
+      summary: saveRespon
+      operationId: saveResponUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: responToSave
+          description: responToSave
+          required: true
+          schema:
+            $ref: '#/definitions/ResponsableInven'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsableInven'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/responsabledeinven/{id}':
+    get:
+      tags:
+        - responsable-inven-controller
+      summary: Gets the product with specific id
+      operationId: getResponsableUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsableInven'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - responsable-inven-controller
+      summary: updateResponsable
+      operationId: updateResponsableUsingPUT_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+        - in: body
+          name: responsableToUpdate
+          description: responsableToUpdate
+          required: true
+          schema:
+            $ref: '#/definitions/ResponsableInven'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsableInven'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - responsable-inven-controller
+      summary: deleteResponsableInven
+      operationId: deleteResponsableInvenUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /tecnico:
+    post:
+      tags:
+        - tecnico-controller
+      summary: saveTecnico
+      operationId: saveTecnicoUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: tecToSave
+          description: tecToSave
+          required: true
+          schema:
+            $ref: '#/definitions/Tecnico'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Tecnico'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/tecnico/{id}':
+    get:
+      tags:
+        - tecnico-controller
+      summary: Gets the product with specific id
+      operationId: getTecnicoUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Tecnico'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - tecnico-controller
+      summary: updateTecnico
+      operationId: updateTecnicoUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+        - in: body
+          name: tecnicoToUpdate
+          description: tecnicoToUpdate
+          required: true
+          schema:
+            $ref: '#/definitions/Tecnico'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Tecnico'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - tecnico-controller
+      summary: deleteTecnico
+      operationId: deleteTecnicoUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+definitions:
+  Inventario:
+    type: object
+    properties:
+      cantidad:
+        type: integer
+        format: int32
+      material:
+        type: string
+      ndeserie:
+        type: string
+    title: Inventario
+  Personal:
+    type: object
+    properties:
+      apellido:
+        type: string
+      contraseña:
+        type: string
+      id:
+        type: string
+      nombre:
+        type: string
+    title: Personal
+  Responsable:
+    type: object
+    properties:
+      apellido:
+        type: string
+      contraseña:
+        type: string
+      id:
+        type: string
+      nombre:
+        type: string
+    title: Responsable
+  ResponsableInven:
+    type: object
+    properties:
+      apellido:
+        type: string
+      contraseña:
+        type: string
+      id:
+        type: string
+      nombre:
+        type: string
+    title: ResponsableInven
+  Tecnico:
+    type: object
+    properties:
+      apellido:
+        type: string
+      contraseña:
+        type: string
+      id:
+        type: string
+      nombre:
+        type: string
+    title: Tecnico
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /Bits-nFingers/emavias2/1.0.0
+schemes:
+ - https
+ - http
